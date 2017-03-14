@@ -1,6 +1,6 @@
 //
 //  Main.swift
-//  MKHXCTRequirementTst
+//  MKHTestingTst
 //
 //  Created by Maxim Khatskevich on 3/13/17.
 //  Copyright © 2017 Maxim Khatskevich. All rights reserved.
@@ -9,7 +9,9 @@
 import XCTest
 
 @testable
-import MKHXCTRequirement
+import MKHTesting
+
+//===
 
 class Main: XCTestCase {
     
