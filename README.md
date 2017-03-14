@@ -1,2 +1,2 @@
-# MKHXCTRequirement
-Convenience extension of 'MKHRequirement' framework that provides native integration with Xcode unit tests.
+# MKHTesting
+A more expressive and readable way to describe expectations in Xcode unit tests.
