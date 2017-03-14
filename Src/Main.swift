@@ -1,6 +1,6 @@
 //
-//  ExtraXCT.swift
-//  MKHRequirement
+//  Main.swift
+//  MKHTesting
 //
 //  Created by Maxim Khatskevich on 12/20/16.
 //  Copyright © 2016 Maxim Khatskevich. All rights reserved.
@@ -11,15 +11,7 @@ import XCTest
 //===
 
 public
-extension REQ
-{
-    enum XCT {}
-}
-
-//===
-
-public
-typealias RXCT = REQ.XCT
+enum TST {}
 
 //===
 
