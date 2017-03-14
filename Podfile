@@ -1,4 +1,5 @@
 projectName = 'MKHTesting'
+projectFileName = 'main'
 
 platform :ios, '8.0'
 
@@ -18,7 +19,7 @@ end
 
 target projectName do
 
-	project projectName
+	project projectFileName
 
 	#===
 
@@ -26,9 +27,9 @@ target projectName do
 
 end
 
-target projectName + 'Tst' do
+target 'Tests' do
 
-	project projectName
+	project projectFileName
 
 	#===
 
