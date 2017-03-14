@@ -28,6 +28,7 @@ _: &CommonSettings
 
     #--- OTHER settings
 
+    CURRENT_PROJECT_VERSION: 0
     SWIFT_VERSION: '3.0'
     SDKROOT: iphoneos
     TARGETED_DEVICE_FAMILY: '1,2'
