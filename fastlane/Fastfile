@@ -22,8 +22,8 @@ default_platform :ios
 
 #===
 
-projName = 'MKHXCTRequirement'
-projFileName = projName + '.xcodeproj'
+projName = 'MKHTesting'
+projFileName = 'main' + '.xcodeproj'
 
 #===
 
@@ -96,7 +96,7 @@ platform :ios do
     # default initial location for any command
     # is inside 'Fastlane' folder
 
-    sh 'cd ./.. && xcake make && pod update --no-repo-update'
+    sh 'cd ./.. && struct -g && pod update --no-repo-update'
 
     # === Set proper current version and build numbers
 
@@ -121,7 +121,7 @@ platform :ios do
     # default initial location for any command
     # is inside 'Fastlane' folder
 
-    sh 'cd ./.. && xcake make && pod update --no-repo-update'
+    sh 'cd ./.. && struct -g && pod update --no-repo-update'
 
     # === Set proper build number (proper version number is stored in the Info file)
 
