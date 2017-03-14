@@ -43,6 +43,17 @@ _: &FwkCommonSettings
 
     PRODUCT_NAME: $(_PROJECT_TITLE)
 
+    OTHER_LDFLAGS:
+    - $(inherited)
+    - -weak_framework
+    - XCTest
+    - -weak-lswiftXCTest
+
+    FRAMEWORK_SEARCH_PATHS:
+    - $(inherited)
+    - $(DEVELOPER_FRAMEWORKS_DIR)
+    - $(PLATFORM_DIR)/Developer/Library/Frameworks
+
     #--- OTHER settings
 
     DEFINES_MODULE: 'YES'
