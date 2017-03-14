@@ -1,4 +1,4 @@
-projectName = 'MKHXCTRequirement'
+projectName = 'MKHTesting'
 
 platform :ios, '8.0'
 
