@@ -15,26 +15,33 @@ import MKHTesting
 
 class Main: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testExample()
+    {
+        let val = RXC.value("The value exists") {
+            
+            // Will fail if get 'nil'
+            return 1 // nil
+        }
+        
+        //===
+        
+        RXC.isTrue("The value is equal to 1") {
+            
+            val == 1
+        }
+        
+        //===
+        
+        RXC.isNil("This expression returns nil") {
+            
+            nil
+        }
+        
+        //===
+        
+        RXC.isNotNil("This expression returns NON-nil value") {
+            
+            23
         }
     }
-    
 }

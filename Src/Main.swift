@@ -3,20 +3,22 @@
 //  MKHTesting
 //
 //  Created by Maxim Khatskevich on 12/20/16.
-//  Copyright © 2016 Maxim Khatskevich. All rights reserved.
+//  Copyright © 2016 Maxim Khatskevich. All rights rrxreserved.
 //
 
 import XCTest
 
-//===
-
-public
-enum TST {}
+import MKHRequirement
 
 //===
 
 public
-extension REQ.XCT
+enum RXC {}
+
+//===
+
+public
+extension RXC
 {
     static
     func value<Output>(
