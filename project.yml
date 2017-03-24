@@ -1,192 +1,76 @@
----
-version: 1.2.0 # Struct spec version https://github.com/lyptt/struct/wiki/Specfile-format:-v1.2.0
-
-#=== GLOBAL SETTINGS ===
-
-_: &iOSdeploymentTarget '8.0'
-_: &CompanyIdentifier khatskevich.maxim
-_: &ProjectTitle MKHTesting
-_: &DevelopmentTeamId UJA88X59XP # 'Maxim Khatskevich'
-
-_: &cfgDebug Debug
-_: &cfgRelease Release
-
-#=== SHARED SETTINGS - ALL targets, ALL configurations =====
-
-_: &CommonSettings
-
-    #--- CUSTOM project-related settings
-
-    _COMPANY_IDENTIFIER: *CompanyIdentifier
-    _PROJECT_TITLE: *ProjectTitle
-
-    #--- PROJECT-related settings
-
-    PRODUCT_BUNDLE_IDENTIFIER: $(_COMPANY_IDENTIFIER).$(PRODUCT_NAME)
-    INFOPLIST_FILE: Info/$(PRODUCT_NAME).plist
-    DEVELOPMENT_TEAM: *DevelopmentTeamId
-
-    #--- OTHER settings
-
-    SWIFT_VERSION: '3.0'
-    SDKROOT: iphoneos
-    TARGETED_DEVICE_FAMILY: '1,2'
-    VERSIONING_SYSTEM: apple-generic
-
-# /CommonSettings
-
-#=== SHARED SETTINGS - framework target ONLY, ALL configurations =====
-
-_: &FwkCommonSettings
-
-    #--- PROJECT-related settings
-
-    PRODUCT_NAME: $(_PROJECT_TITLE)
-
-    OTHER_LDFLAGS:
-    - $(inherited)
-    - -weak_framework
-    - XCTest
-    - -weak-lswiftXCTest
-
-    FRAMEWORK_SEARCH_PATHS:
-    - $(inherited)
-    - $(DEVELOPER_FRAMEWORKS_DIR)
-    - $(PLATFORM_DIR)/Developer/Library/Frameworks
-
-    #--- OTHER settings
-
-    DEFINES_MODULE: 'YES'
-    SKIP_INSTALL: 'YES'
-
-    # DYLIB_COMPATIBILITY_VERSION: '1'
-    # DYLIB_CURRENT_VERSION: '6'
-    # DYLIB_INSTALL_NAME_BASE: '@rpath'
-
-# /FwkCommonSettings
-
-#=== SHARED SETTINGS - framework unit tests target ONLY, ALL configurations =====
-
-_: &TstFwkCommonSettings
-
-    #--- PROJECT-related settings
-
-    PRODUCT_NAME: $(_PROJECT_TITLE)Tst
-    FRAMEWORK_SEARCH_PATHS: $(inherited) $(BUILT_PRODUCTS_DIR)
-
-# /TstFwkCommonSettings
-
-#=== SPEC ================
-
+# generated with MKHProjGen
+# https://github.com/maximkhatskevich/MKHProjGen
+version: 1.2.1
 configurations:
-
-    *cfgDebug:
-
-        type: debug
-
-        profiles:
-        - general:debug
-        - ios:debug
-
-        overrides:
-            <<: *CommonSettings
-            IPHONEOS_DEPLOYMENT_TARGET: *iOSdeploymentTarget
-
-    #---
-    
-    *cfgRelease:
-
-        type: release
-
-        profiles:
-        - general:release
-        - ios:release
-
-        overrides:
-            <<: *CommonSettings
-            IPHONEOS_DEPLOYMENT_TARGET: *iOSdeploymentTarget
-
-# /configurations
-
-#===
-
+  Debug:
+    type: "debug"
+    profiles:
+    - "general:debug"
+    overrides:
+      IPHONEOS_DEPLOYMENT_TARGET: "8.0"
+      DEVELOPMENT_TEAM: "UJA88X59XP"
+      SWIFT_VERSION: "3.0"
+      VERSIONING_SYSTEM: "apple-generic"
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+  Release:
+    type: "release"
+    profiles:
+    - "general:release"
+    overrides:
+      IPHONEOS_DEPLOYMENT_TARGET: "8.0"
+      DEVELOPMENT_TEAM: "UJA88X59XP"
+      SWIFT_VERSION: "3.0"
+      VERSIONING_SYSTEM: "apple-generic"
 targets:
-
-    *ProjectTitle:
-
-        platform: ios
-
-        type: ':framework'
-
-        references:
-        - sdkroot:Foundation.framework
-
-        sources: Src
-
-        profiles:
-        - platform:ios
-        - framework
-
-        configurations:
-
-            *cfgDebug:
-                <<: *FwkCommonSettings
-                IPHONEOS_DEPLOYMENT_TARGET: *iOSdeploymentTarget
-                SWIFT_OPTIMIZATION_LEVEL: '-Onone'
-
-            *cfgRelease:
-                <<: *FwkCommonSettings
-                IPHONEOS_DEPLOYMENT_TARGET: *iOSdeploymentTarget
-
-        # /configurations
-
-    # /*ProjectTitle
-
-    #---
-
-    Tests:
-
-        platform: ios
-
-        type: ':bundle.unit-test'
-        
-        references:
-        - sdkroot:Foundation.framework
-        - *ProjectTitle
-        
-        sources: Tst
-
-        profiles:
-        - platform:ios
-        - bundle.unit-test
-        
-        configurations:
-
-            *cfgDebug:
-                <<: *TstFwkCommonSettings
-                IPHONEOS_DEPLOYMENT_TARGET: *iOSdeploymentTarget
-                SWIFT_OPTIMIZATION_LEVEL: '-Onone'
-
-            *cfgRelease:
-                <<: *TstFwkCommonSettings
-                IPHONEOS_DEPLOYMENT_TARGET: *iOSdeploymentTarget
-        
-        # /configurations
-
-    # /Tests
-
-# /targets
-
-#===
-
+  MKHTesting:
+    platform: "ios"
+    type: ":framework"
+    sources:
+    - "Src"
+    configurations:
+      Debug:
+        IPHONEOS_DEPLOYMENT_TARGET: "8.0"
+        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting"
+        INFOPLIST_FILE: "Info/Fwk.plist"
+        OTHER_LDFLAGS: "-weak-lswiftXCTest"
+        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks"
+        SDKROOT: "iphoneos"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        DEFINES_MODULE: "NO"
+        SKIP_INSTALL: "YES"
+        MTL_ENABLE_DEBUG_INFO: "true"
+      Release:
+        IPHONEOS_DEPLOYMENT_TARGET: "8.0"
+        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting"
+        INFOPLIST_FILE: "Info/Fwk.plist"
+        OTHER_LDFLAGS: "-weak-lswiftXCTest"
+        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks"
+        SDKROOT: "iphoneos"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        DEFINES_MODULE: "NO"
+        SKIP_INSTALL: "YES"
+  Tests:
+    platform: "ios"
+    type: ":bundle.unit-test"
+    references:
+    - "MKHTesting"
+    sources:
+    - "Tst"
+    configurations:
+      Debug:
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+        IPHONEOS_DEPLOYMENT_TARGET: "8.0"
+        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting.Tst"
+        INFOPLIST_FILE: "Info/Tst.plist"
+        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(BUILT_PRODUCTS_DIR)"
+        MTL_ENABLE_DEBUG_INFO: "true"
+      Release:
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+        IPHONEOS_DEPLOYMENT_TARGET: "8.0"
+        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting.Tst"
+        INFOPLIST_FILE: "Info/Tst.plist"
+        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(BUILT_PRODUCTS_DIR)"
 variants:
-
-    $base:
-        abstract: YES
-
-    #---
-
-    Main:
-        #
-
-# /variants
+  $base:
+    abstract: true
+  Main:
