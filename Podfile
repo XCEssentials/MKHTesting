@@ -1,9 +1,9 @@
-projectName = 'MKHTesting'
-projectFileName = 'main'
+repoName = 'MKHTesting'
+projectName = 'main'
 
 platform :ios, '8.0'
 
-workspace projectName
+workspace repoName
 
 use_frameworks!
 
@@ -17,9 +17,9 @@ end
 
 #===
 
-target projectName do
+target repoName do
 
-	project projectFileName
+	project projectName
 
 	#===
 
@@ -29,7 +29,7 @@ end
 
 target 'Tests' do
 
-	project projectFileName
+	project projectName
 
 	#===
 
