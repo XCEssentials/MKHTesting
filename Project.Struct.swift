@@ -50,6 +50,9 @@ let project = Project("Main") { p in
             "PRODUCT_BUNDLE_IDENTIFIER" <<< BundleId.fwk,
             "INFOPLIST_FILE" <<< "Info/Fwk.plist",
             
+            "OTHER_LDFLAGS" <<< "-weak-lswiftXCTest",
+            "FRAMEWORK_SEARCH_PATHS" <<< "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks",
+            
             //--- iOS related:
             
             "SDKROOT" <<< "iphoneos",
