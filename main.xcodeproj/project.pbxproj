@@ -121,7 +121,6 @@
 			children = (
 				952785F3688A2B983D326BC6 /* Main.swift */,
 			);
-			name = Tst;
 			path = Tst;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -138,14 +137,14 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$local";
+			name = $local;
 			sourceTree = "<group>";
 		};
 		C0BF99850BC4F97F8486B0C0 /* $subproj */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$subproj";
+			name = $subproj;
 			sourceTree = "<group>";
 		};
 		E7A07821F56B2741993CE1FF /* Frameworks */ = {
@@ -165,7 +164,6 @@
 			children = (
 				BB7EB7B6119F8F20645AB998 /* Main.swift */,
 			);
-			name = Src;
 			path = Src;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -219,7 +217,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
+				TargetAttributes = {
+					C36E20549B20862DC8DD5880 = {
+						DevelopmentTeam = UJA88X59XP;
+					};
+					E3DD954B8D0DF2E3213802E0 = {
+						DevelopmentTeam = UJA88X59XP;
+					};
+				};
 			};
 			buildConfigurationList = 9DB3523EE7DB3C05C0873DDD /* Build configuration list for PBXProject "main" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -416,6 +422,7 @@
 			baseConfigurationReference = 33815F17919EC140FE0C07FB /* Pods-MKHTesting.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
@@ -517,6 +524,7 @@
 			baseConfigurationReference = F31E4BD455E107DB7872B085 /* Pods-MKHTesting.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
 				ENABLE_TESTABILITY = YES;
