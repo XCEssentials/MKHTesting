@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # http://stackoverflow.com/a/35102636
 
   s.weak_framework            = 'XCTest'
-  s.dependency                  'MKHRequirement/Core'
+  s.dependency                  'MKHRequirement'
 
   s.pod_target_xcconfig = {
 
