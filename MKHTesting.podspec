@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                      = 'MKHTesting'
-  s.version                   = '1.0.0'
+  s.version                   = '1.0.1'
   s.summary                   = 'A more expressive and readable way to describe expectations in Xcode unit tests.'
   s.homepage                  = 'https://github.com/maximkhatskevich/#{s.name}'
   s.license                   = { :type => 'MIT', :file => 'LICENSE' }
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # http://stackoverflow.com/a/35102636
 
   s.weak_framework            = 'XCTest'
-  s.dependency                  'MKHRequirement/Core'
+  s.dependency                  'MKHRequirement'
 
   s.pod_target_xcconfig = {
 
