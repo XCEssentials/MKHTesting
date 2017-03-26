@@ -1,5 +1,5 @@
 repoName = 'MKHTesting'
-projectName = 'main'
+projectName = repoName
 
 platform :ios, '8.0'
 
