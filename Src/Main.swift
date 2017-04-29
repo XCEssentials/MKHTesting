@@ -8,7 +8,7 @@
 
 import XCTest
 
-import MKHRequirement
+import XCERequirement
 
 //===
 
