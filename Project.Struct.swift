@@ -1,13 +1,13 @@
-import MKHProjGen
+import XCEProjectGenerator
 
 //===
 
 let My =
 (
-    repoName: "MKHTesting",
+    repoName: "Testing",
     deploymentTarget: "8.0",
-    companyIdentifier: "khatskevich.maxim",
-    developmentTeamId: "UJA88X59XP" // "Maxim Khatskevich"
+    companyIdentifier: "io.XCEssentials",
+    companyPrefix: "XCE"
 )
 
 let BundleId =
@@ -26,8 +26,6 @@ let project = Project(My.repoName) { p in
         
         "IPHONEOS_DEPLOYMENT_TARGET" <<< My.deploymentTarget, // bug wokraround
         
-        "DEVELOPMENT_TEAM" <<< My.developmentTeamId,
-        
         "SWIFT_VERSION" <<< "3.0",
         "VERSIONING_SYSTEM" <<< "apple-generic"
     )
@@ -39,7 +37,7 @@ let project = Project(My.repoName) { p in
     
     //---
     
-    p.target(My.repoName, .iOS, .framework) { t in
+    p.target("Fwk", .iOS, .framework) { t in
         
         t.include("Src")
         
@@ -47,11 +45,17 @@ let project = Project(My.repoName) { p in
         
         t.configurations.all.override(
             
+            "PRODUCT_NAME" <<< "\(My.companyPrefix)\(My.repoName)",
+            
             "IPHONEOS_DEPLOYMENT_TARGET" <<< My.deploymentTarget, // bug wokraround
             
             "PRODUCT_BUNDLE_IDENTIFIER" <<< BundleId.fwk,
             "INFOPLIST_FILE" <<< "Info/Fwk.plist",
             
+            //=== specific for this project 
+            
+            // http://stackoverflow.com/a/35102636
+
             "OTHER_LDFLAGS" <<< "-weak-lswiftXCTest",
             "FRAMEWORK_SEARCH_PATHS" <<< "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks",
             
