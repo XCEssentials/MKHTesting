@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "943C0C3F1E7B196200C8DF86"
-               BuildableName = "MKHProjGenLauncher"
-               BlueprintName = "MKHProjGenLauncher"
-               ReferencedContainer = "container:MKHProjGen.xcodeproj">
+               BuildableName = "Launcher"
+               BlueprintName = "Launcher"
+               ReferencedContainer = "container:ProjectGenerator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "943C0C3F1E7B196200C8DF86"
-            BuildableName = "MKHProjGenLauncher"
-            BlueprintName = "MKHProjGenLauncher"
-            ReferencedContainer = "container:MKHProjGen.xcodeproj">
+            BuildableName = "Launcher"
+            BlueprintName = "Launcher"
+            ReferencedContainer = "container:ProjectGenerator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "943C0C3F1E7B196200C8DF86"
-            BuildableName = "MKHProjGenLauncher"
-            BlueprintName = "MKHProjGenLauncher"
-            ReferencedContainer = "container:MKHProjGen.xcodeproj">
+            BuildableName = "Launcher"
+            BlueprintName = "Launcher"
+            ReferencedContainer = "container:ProjectGenerator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "943C0C3F1E7B196200C8DF86"
-            BuildableName = "MKHProjGenLauncher"
-            BlueprintName = "MKHProjGenLauncher"
-            ReferencedContainer = "container:MKHProjGen.xcodeproj">
+            BuildableName = "Launcher"
+            BlueprintName = "Launcher"
+            ReferencedContainer = "container:ProjectGenerator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,9 +1,8 @@
-repoName = 'MKHTesting'
-projectName = 'main'
+projName = 'Testing'
 
 platform :ios, '8.0'
 
-workspace repoName
+workspace projName
 
 use_frameworks!
 
@@ -11,15 +10,15 @@ use_frameworks!
 
 def sharedPods
 
-	pod 'MKHRequirement', :git => 'https://github.com/maximkhatskevich/MKHRequirement.git'
+	pod 'XCERequirement', '~> 1.4'
 
 end
 
 #===
 
-target repoName do
+target 'Fwk' do
 
-	project projectName
+	project projName
 
 	#===
 
@@ -29,7 +28,7 @@ end
 
 target 'Tests' do
 
-	project projectName
+	project projName
 
 	#===
 

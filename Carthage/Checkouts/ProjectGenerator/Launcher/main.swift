@@ -8,12 +8,12 @@
 
 import Foundation
 
-import MKHProjGen
+import XCEProjectGenerator
 
 //===
 
 let specData =
-    Manager.prepareSpec(for: project)
+    Manager.prepareSpec(specFormat, for: project)
     .data(using: .utf8)
 
 let targetPath = "\(CommandLine.arguments[1])/project.yml"

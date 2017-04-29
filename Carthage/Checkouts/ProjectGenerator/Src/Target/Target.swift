@@ -57,6 +57,11 @@ extension Project
         
         //---
         
+        public
+        var sourceOptions: [String: String] = [:]
+        
+        //---
+        
         public private(set)
         var i18nResources: [String] = []
         
@@ -106,7 +111,20 @@ extension Project
         {
             var ut = Target(self.platform, name, .unitTest, configureTarget)
             
+            //===
+            
             ut.dependencies.otherTarget(self.name)
+            
+            if
+                type == .app
+            {
+                ut.configurations.all.override(
+                    
+                    // https://github.com/workshop/struct/blob/master/examples/iOS_Application/project.yml#L115
+                    "TEST_HOST"
+                        <<< "$(BUILT_PRODUCTS_DIR)/\(self.name).app/\(self.name)"
+                )
+            }
             
             //===
             
