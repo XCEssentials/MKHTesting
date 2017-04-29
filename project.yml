@@ -9,7 +9,6 @@ configurations:
     - "general:debug"
     overrides:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-      DEVELOPMENT_TEAM: "UJA88X59XP"
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
       SWIFT_OPTIMIZATION_LEVEL: "-Onone"
@@ -19,19 +18,19 @@ configurations:
     - "general:release"
     overrides:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-      DEVELOPMENT_TEAM: "UJA88X59XP"
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
 targets:
-  MKHTesting:
+  Fwk:
     platform: "ios"
     type: ":framework"
     sources:
     - "Src"
     configurations:
       Debug:
+        PRODUCT_NAME: "XCETesting"
         IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting"
+        PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.Testing"
         INFOPLIST_FILE: "Info/Fwk.plist"
         OTHER_LDFLAGS: "-weak-lswiftXCTest"
         FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks"
@@ -41,8 +40,9 @@ targets:
         SKIP_INSTALL: "YES"
         MTL_ENABLE_DEBUG_INFO: "true"
       Release:
+        PRODUCT_NAME: "XCETesting"
         IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting"
+        PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.Testing"
         INFOPLIST_FILE: "Info/Fwk.plist"
         OTHER_LDFLAGS: "-weak-lswiftXCTest"
         FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks"
@@ -54,24 +54,24 @@ targets:
     platform: "ios"
     type: ":bundle.unit-test"
     references:
-    - "MKHTesting"
+    - "Fwk"
     sources:
     - "Tst"
     configurations:
       Debug:
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
         IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting.Tst"
+        PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.Testing.Tst"
         INFOPLIST_FILE: "Info/Tst.plist"
         FRAMEWORK_SEARCH_PATHS: "$(inherited) $(BUILT_PRODUCTS_DIR)"
         MTL_ENABLE_DEBUG_INFO: "true"
       Release:
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
         IPHONEOS_DEPLOYMENT_TARGET: "8.0"
-        PRODUCT_BUNDLE_IDENTIFIER: "khatskevich.maxim.MKHTesting.Tst"
+        PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.Testing.Tst"
         INFOPLIST_FILE: "Info/Tst.plist"
         FRAMEWORK_SEARCH_PATHS: "$(inherited) $(BUILT_PRODUCTS_DIR)"
 variants:
   $base:
     abstract: true
-  MKHTesting:
+  Testing:
