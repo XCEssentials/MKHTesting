@@ -11,7 +11,7 @@
 		30401A69D5925A472890E47F /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C89191435B9A36DB9BFEE44 /* Main.swift */; };
 		3E81A6B367B82DA17EC489C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFDCE23F3A86F4ED9D7A10F /* Foundation.framework */; };
 		49BA4031662745ACD744651C /* Pods_Fwk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C968726CC08321D4B72346 /* Pods_Fwk.framework */; };
-		6DCDF13B9F96C6E81042FFC5 /* Fwk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C1E3B4DC610E4CA2EF97D6 /* Fwk.framework */; };
+		6DCDF13B9F96C6E81042FFC5 /* XCETesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C1E3B4DC610E4CA2EF97D6 /* XCETesting.framework */; };
 		E9F4392D878181E314D8A975 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0857DE36E13A0D7280813C29 /* Pods_Tests.framework */; };
 		F0B659CDDD822639AAA37046 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDFDCE23F3A86F4ED9D7A10F /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +58,7 @@
 		6CB50941325DC01E5AF64632 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		864B3F8499958E4C3DBC42E5 /* Main.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		C433BB7184A369D2E89BE370 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5C1E3B4DC610E4CA2EF97D6 /* Fwk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fwk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5C1E3B4DC610E4CA2EF97D6 /* XCETesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCETesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFDCE23F3A86F4ED9D7A10F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EE249EC2D6DB230A577C37CB /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E81A6B367B82DA17EC489C0 /* Foundation.framework in Frameworks */,
-				6DCDF13B9F96C6E81042FFC5 /* Fwk.framework in Frameworks */,
+				6DCDF13B9F96C6E81042FFC5 /* XCETesting.framework in Frameworks */,
 				E9F4392D878181E314D8A975 /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,7 +108,7 @@
 		527BAE0C10734DB8CD31659B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5C1E3B4DC610E4CA2EF97D6 /* Fwk.framework */,
+				D5C1E3B4DC610E4CA2EF97D6 /* XCETesting.framework */,
 				C433BB7184A369D2E89BE370 /* Tests.xctest */,
 			);
 			name = Products;
@@ -119,7 +119,6 @@
 			children = (
 				1C89191435B9A36DB9BFEE44 /* Main.swift */,
 			);
-			name = Src;
 			path = Src;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -128,7 +127,6 @@
 			children = (
 				864B3F8499958E4C3DBC42E5 /* Main.swift */,
 			);
-			name = Tst;
 			path = Tst;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -159,14 +157,14 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$subproj";
+			name = $subproj;
 			sourceTree = "<group>";
 		};
 		EE71CED6916FD093192C1827 /* $local */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "$local";
+			name = $local;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +207,7 @@
 			);
 			name = Fwk;
 			productName = Fwk;
-			productReference = D5C1E3B4DC610E4CA2EF97D6 /* Fwk.framework */;
+			productReference = D5C1E3B4DC610E4CA2EF97D6 /* XCETesting.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -425,6 +423,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,6 +473,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

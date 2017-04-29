@@ -59,6 +59,8 @@ let project = Project(My.repoName) { p in
             "OTHER_LDFLAGS" <<< "-weak-lswiftXCTest",
             "FRAMEWORK_SEARCH_PATHS" <<< "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks",
             
+            "ENABLE_BITCODE" <<< false,
+            
             //--- iOS related:
             
             "SDKROOT" <<< "iphoneos",
