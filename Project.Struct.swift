@@ -56,6 +56,15 @@ let project = Project("Main") { project in
             "PRODUCT_BUNDLE_IDENTIFIER" <<< bundleId.fwk,
             "INFOPLIST_FILE" <<< "Info/Fwk.plist",
             
+            //=== specific for this project
+            
+            // http://stackoverflow.com/a/35102636
+            
+            "OTHER_LDFLAGS" <<< "-weak-lswiftXCTest",
+            "FRAMEWORK_SEARCH_PATHS" <<< "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks",
+            
+            "ENABLE_BITCODE" <<< false,
+            
             //--- iOS related:
             
             "SDKROOT" <<< "iphoneos",
