@@ -1,10 +1,28 @@
-//
-//  Main.swift
-//  MKHTesting
-//
-//  Created by Maxim Khatskevich on 12/20/16.
-//  Copyright © 2016 Maxim Khatskevich. All rights rrxreserved.
-//
+/*
+ 
+ MIT License
+ 
+ Copyright (c) 2016 Maxim Khatskevich (maxim@khatskevi.ch)
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ 
+ */
 
 import XCTest
 
@@ -13,134 +31,161 @@ import XCERequirement
 //===
 
 public
-enum RXC {}
+struct Assertation
+{
+    public
+    let what: String
+    
+    public
+    let file: StaticString
+    
+    public
+    let line: UInt
+    
+    public
+    init(_ what: String, file: StaticString = #file, line: UInt = #line)
+    {
+        self.what = what
+        self.file = file
+        self.line = line
+    }
+    
+    fileprivate
+    func fail(with error: Error)
+    {
+        if
+            let error = error as? UnFulfilledRequirement
+        {
+            XCTFail(error.description, file: file, line: line)
+        }
+        else
+        {
+            XCTFail(error.localizedDescription, file: file, line: line)
+        }
+        
+        //---
+        
+        fatalError("Assertation failed")
+    }
+}
+
+public
+typealias Assert = Assertation
 
 //===
 
 public
-extension RXC
+extension Assertation
 {
-    static
-    func value<Output>(
-        _ description: String,
-        file: StaticString = #file,
-        line: UInt = #line,
-        _ body: () -> Output?
-        ) -> Output?
+    @discardableResult
+    func isNotNil<Output>(_ value: Output?) -> Output
     {
         do
         {
-            return try REQ.value(description, body)
-        }
-        catch
-            let error as VerificationFailed
-        {
-            XCTFail(
-                "[\(error.description)]",
-                file: file,
-                line: line)
-            
-            //===
-            
-            return nil
+            return try Require(what).isNotNil(value)
         }
         catch
         {
-            XCTFail(
-                error.localizedDescription,
-                file: file,
-                line: line)
-            
-            //===
-            
-            return nil
+            fail(with: error)
         }
     }
     
-    static
-    func isTrue(
-        _ description: String,
-        file: StaticString = #file,
-        line: UInt = #line,
-        _ body: () -> Bool
-        )
+    //===
+    
+    @discardableResult
+    func isNotNil<Output>(_ body: () throws -> Output?) -> Output
     {
         do
         {
-            try REQ.isTrue(description, body)
-        }
-        catch
-            let error as VerificationFailed
-        {
-            XCTFail(
-                "[\(error.description)]",
-                file: file,
-                line: line)
+            return try Require(what).isNotNil(body)
         }
         catch
         {
-            XCTFail(
-                error.localizedDescription,
-                file: file,
-                line: line)
+            fail(with: error)
         }
     }
     
-    static
-    func isNil(
-        _ description: String,
-        file: StaticString = #file,
-        line: UInt = #line,
-        _ body: () -> Any?
-        )
+    //===
+    
+    func isNil(_ value: Any?)
     {
         do
         {
-            try REQ.isNil(description, body)
-        }
-        catch
-            let error as VerificationFailed
-        {
-            XCTFail(
-                "[\(error.description)]",
-                file: file,
-                line: line)
+            return try Require(what).isNil(value)
         }
         catch
         {
-            XCTFail(
-                error.localizedDescription,
-                file: file,
-                line: line)
+            fail(with: error)
         }
     }
     
-    static
-    func isNotNil(
-        _ description: String,
-        file: StaticString = #file,
-        line: UInt = #line,
-        _ body: () -> Any?
-        )
+    //===
+    
+    func isNil(_ body: () throws -> Any?)
     {
         do
         {
-            try REQ.isNotNil(description, body)
-        }
-        catch
-            let error as VerificationFailed
-        {
-            XCTFail(
-                "[\(error.description)]",
-                file: file,
-                line: line)
+            return try Require(what).isNil(body)
         }
         catch
         {
-            XCTFail(
-                error.localizedDescription,
-                file: file,
-                line: line)
+            fail(with: error)
+        }
+    }
+    
+    //===
+    
+    func isTrue(_ value: Bool)
+    {
+        do
+        {
+            return try Require(what).isTrue(value)
+        }
+        catch
+        {
+            fail(with: error)
+        }
+    }
+    
+    //===
+    
+    func isTrue(_ body: () throws -> Bool)
+    {
+        do
+        {
+            return try Require(what).isTrue(body)
+        }
+        catch
+        {
+            fail(with: error)
+        }
+    }
+    
+    //===
+    
+    func isFalse(_ value: Bool)
+    {
+        do
+        {
+            return try Require(what).isFalse(value)
+        }
+        catch
+        {
+            fail(with: error)
+        }
+    }
+    
+    //===
+    
+    func isFalse(_ body: () throws -> Bool)
+    {
+        do
+        {
+            return try Require(what).isFalse(body)
+        }
+        catch
+        {
+            fail(with: error)
         }
     }
 }

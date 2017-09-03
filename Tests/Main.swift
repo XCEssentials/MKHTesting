@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable
+//@testable
 import XCETesting
 
 //===
@@ -17,7 +17,7 @@ class Main: XCTestCase {
     
     func testExample()
     {
-        let val = RXC.value("The value exists") {
+        let val = Assert("The value exists").isNotNil {
             
             // Will fail if get 'nil'
             return 1 // nil
@@ -25,21 +25,21 @@ class Main: XCTestCase {
         
         //===
         
-        RXC.isTrue("The value is equal to 1") {
+        Assert("The value is equal to 1").isTrue {
             
             val == 1
         }
         
         //===
         
-        RXC.isNil("This expression returns nil") {
+        Assert("This expression returns nil").isNil {
             
             nil
         }
         
         //===
         
-        RXC.isNotNil("This expression returns NON-nil value") {
+        Assert("This expression returns NON-nil value").isNotNil {
             
             23
         }
