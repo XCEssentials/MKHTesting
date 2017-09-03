@@ -1,8 +1,11 @@
-projName = 'Testing'
+repoName = 'Testing'
+projName = 'Main'
+
+#===
 
 platform :ios, '8.0'
 
-workspace projName
+workspace repoName
 
 use_frameworks!
 
@@ -10,7 +13,7 @@ use_frameworks!
 
 def sharedPods
 
-	pod 'XCERequirement', '~> 1.4'
+	#
 
 end
 
@@ -24,13 +27,17 @@ target 'Fwk' do
 
 	sharedPods
 
+	#===
+
+	pod 'XCERequirement', '~> 1.5'
+
 end
 
 target 'Tests' do
 
 	project projName
-
-	#===
+    
+    #===
 
 	sharedPods
 
