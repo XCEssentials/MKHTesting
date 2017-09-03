@@ -1,40 +1,37 @@
-# generated with MKHProjGen
-# https://github.com/maximkhatskevich/MKHProjGen
-# https://github.com/workshop/struct/wiki/Spec-format:-v1.3
-version: 1.3.0
+# generated with XCEProjectGenerator
+# https://github.com/XCEssentials/ProjectGenerator
+# https://github.com/workshop/struct/wiki/Spec-format:-v2.0
+version: 2.1.0
 configurations:
   Debug:
     type: "debug"
-    profiles:
-    - "general:debug"
     overrides:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
+      CURRENT_PROJECT_VERSION: "0"
+      CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
       SWIFT_OPTIMIZATION_LEVEL: "-Onone"
   Release:
     type: "release"
-    profiles:
-    - "general:release"
     overrides:
       IPHONEOS_DEPLOYMENT_TARGET: "8.0"
       SWIFT_VERSION: "3.0"
       VERSIONING_SYSTEM: "apple-generic"
+      CURRENT_PROJECT_VERSION: "0"
+      CODE_SIGN_IDENTITY[sdk=iphoneos*]: ""
 targets:
   Fwk:
     platform: "ios"
     type: ":framework"
     sources:
-    - "Src"
+    - "Sources"
     configurations:
       Debug:
         PRODUCT_NAME: "XCETesting"
         IPHONEOS_DEPLOYMENT_TARGET: "8.0"
         PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.Testing"
         INFOPLIST_FILE: "Info/Fwk.plist"
-        OTHER_LDFLAGS: "-weak-lswiftXCTest"
-        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks"
-        ENABLE_BITCODE: "false"
         SDKROOT: "iphoneos"
         TARGETED_DEVICE_FAMILY: "1,2"
         DEFINES_MODULE: "NO"
@@ -45,9 +42,6 @@ targets:
         IPHONEOS_DEPLOYMENT_TARGET: "8.0"
         PRODUCT_BUNDLE_IDENTIFIER: "io.XCEssentials.Testing"
         INFOPLIST_FILE: "Info/Fwk.plist"
-        OTHER_LDFLAGS: "-weak-lswiftXCTest"
-        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks"
-        ENABLE_BITCODE: "false"
         SDKROOT: "iphoneos"
         TARGETED_DEVICE_FAMILY: "1,2"
         DEFINES_MODULE: "NO"
@@ -58,7 +52,7 @@ targets:
     references:
     - "Fwk"
     sources:
-    - "Tst"
+    - "Tests"
     configurations:
       Debug:
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
@@ -76,4 +70,4 @@ targets:
 variants:
   $base:
     abstract: true
-  Testing:
+  Main:
