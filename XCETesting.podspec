@@ -15,12 +15,12 @@ Pod::Spec.new do |s|
   s.homepage                  = companyGitHubPage + '/' + projName
   
   s.source                    = { :git => companyGitHubAccount + '/' + projName + '.git', :tag => s.version }
-  s.source_files              = 'Src/**/*.swift'
+  s.source_files              = 'Sources/**/*.swift'
 
   s.ios.deployment_target     = '8.0'
   s.requires_arc              = true
 
-  s.dependency                  'XCERequirement', '~> 1.4'
+  s.dependency                  'XCERequirement', '~> 1.5'
 
   #===
 
