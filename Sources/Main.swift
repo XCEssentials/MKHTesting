@@ -62,10 +62,6 @@ struct Assertation
         {
             XCTFail(error.localizedDescription, file: file, line: line)
         }
-        
-        //---
-        
-        fatalError("Assertation failed")
     }
 }
 
@@ -78,7 +74,7 @@ public
 extension Assertation
 {
     @discardableResult
-    func isNotNil<Output>(_ value: Output?) -> Output
+    func isNotNil<Output>(_ value: Output?) -> Output?
     {
         do
         {
@@ -87,13 +83,17 @@ extension Assertation
         catch
         {
             fail(with: error)
+            
+            //---
+            
+            return nil
         }
     }
     
     //===
     
     @discardableResult
-    func isNotNil<Output>(_ body: () throws -> Output?) -> Output
+    func isNotNil<Output>(_ body: () throws -> Output?) -> Output?
     {
         do
         {
@@ -102,6 +102,10 @@ extension Assertation
         catch
         {
             fail(with: error)
+            
+            //---
+            
+            return nil
         }
     }
     

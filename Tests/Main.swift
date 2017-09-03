@@ -17,31 +17,20 @@ class Main: XCTestCase {
     
     func testExample()
     {
-        let val = Assert("The value exists").isNotNil {
-            
-            // Will fail if get 'nil'
-            return 1 // nil
-        }
+        let valToCheck: Int? = 1
+        
+        let val = Assert("The value exists").isNotNil(valToCheck)
         
         //===
         
-        Assert("The value is equal to 1").isTrue {
-            
-            val == 1
-        }
+        Assert("The value is equal to 1").isTrue(val == 1)
         
         //===
         
-        Assert("This expression returns nil").isNil {
-            
-            nil
-        }
+        Assert("This expression returns nil").isNil(nil)
         
         //===
         
-        Assert("This expression returns NON-nil value").isNotNil {
-            
-            23
-        }
+        Assert("This expression returns NON-nil value").isNotNil(23)
     }
 }
